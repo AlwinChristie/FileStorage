@@ -14,6 +14,16 @@ if(process.env.NODE_ENV !== 'production'){
   require('dotenv').config();
 }
 
+// Connect to MongoDB database
+const mongoose = require('mongoose');
+mongoose.connect(process.env.DATABASE_URL)
+.then((res) =>{
+  console.log('Connected to database');
+  }
+).catch((err) => {
+  console.log(`Database connection error: ${err}`);
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
