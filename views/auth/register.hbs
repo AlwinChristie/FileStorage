@@ -1,0 +1,37 @@
+<div class="container-auth vh-100 d-flex justify-content-center align-items-center">
+    <div class="box-container-auth d-flex flex-column">
+        <div class="top-container d-flex flex-column justify-content-end">
+          <div class="back-drop d-flex flex-column"></div>
+          <div class="head-container d-flex flex-column">
+            <h2 class="head-text">Create</h2>
+            <h2 class="head-text">Account</h2>
+            <h5 class="sub-text">Please sign-up to continue</h5>
+          </div>
+        </div>
+        <form class="form-container" method="post">
+          <fieldset class="my-2">
+              <input name="username" id="username" type="email" placeholder="Username" class="input-data" required/>
+          </fieldset>
+          <fieldset class="my-2">
+              <input name="password" id="password" type="password" placeholder="Password" class="input-data" required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
+          </fieldset>
+          <fieldset class="my-2">
+              <input name="confirm" id="confirm" type="password" placeholder="Confirm Password" class="input-data" required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onkeyup="return comparePasswords()"/>
+              <span id="pwMsg"></span>
+          </fieldset>
+          <fieldset class="my-2">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-primary" onclick="return comparePasswords()">REGISTER</button>
+            </div>
+            <div class="my-3 d-flex justify-content-center">
+                <a href="/auth/Google">
+                    <img src="/images/google.png" alt="Sign In with Google">
+                </a>
+            </div>
+            <p class="text-center">Already have an account ?<a href="/auth/login">Log In</a></p>
+          </fieldset>
+        </form>
+    </div>
+</div>

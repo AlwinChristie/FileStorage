@@ -14,7 +14,11 @@
     <!-- Fontawesome Icons-->
     <script src="https://kit.fontawesome.com/f0b8ee99b5.js" crossorigin="anonymous"></script>
 
-    <link rel='stylesheet' href='/stylesheets/style.css' />    
+    <link rel='stylesheet' href='/stylesheets/style.css' /> 
+
+    <!-- Custom javasript -->
+    <script src="/javascripts/scripts.js"></script>
+
   </head>
   <body>
     <!-- Navbar -->
@@ -37,12 +41,21 @@
             </li>
           </ul>
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#"><button class="btn btn-light">Register</button></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><button class="btn btn-light">Login</button></a>
-            </li>
+            {{#if user}}
+              <li class="nav-item">
+                <a class="nav-link" href="#">{{user.username}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/auth/logout">Logout</a>
+              </li>
+            {{else}}
+              <li class="nav-item">
+                <a class="nav-link" href="/auth/register"><button class="btn btn-light">Register</button></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/auth/login"><button class="btn btn-light">Login</button></a>
+              </li>
+            {{/if}}
           </ul>
         </div>
       </div>
