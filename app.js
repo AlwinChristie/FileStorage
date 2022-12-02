@@ -11,6 +11,7 @@ const auth = require('./controllers/auth');
 
 const passport = require('passport');
 const session = require('express-session');
+const fileUpload = require("express-fileupload");
 
 var app = express();
 
@@ -28,6 +29,8 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(fileUpload({ createParentPath: true,}));
 
 const User = require('./models/user');
 passport.use(User.createStrategy())

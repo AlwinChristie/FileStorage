@@ -1,17 +1,17 @@
 <div class="m-3 vh-100">
     <h1 class="heading my-4">Add Your File</h1>
     <div class="h-100 d-flex  justify-content-center">
-        <form method="post" class="m-4 w-100">
+        <form method="post" action="/files/add" class="m-4 w-100" enctype="multipart/form-data">
             <fieldset class="my-2 d-flex align-items-center">
                 <label for="filename" class="col-2 sub-head">File Name: </label>
-                <input name="filename" id="filename" required type="text" maxlength="50" class="data-text"/>
+                <input name="filename" id="filename" required type="text" maxlength="25" class="data-text"/>
             </fieldset>
             <fieldset class="my-2 d-flex align-items-center">
                 <label for="description" class="col-2 sub-head">Description: </label>
                 <textarea name="description" id="description" required maxlength="150" cols="40" rows="5" class="data-text"></textarea>
             </fieldset>
             <fieldset>
-                <input name="username" id="username" required value="123" type="hidden"/>
+                <input name="username" id="username" required value="{{user.username}}" type="hidden"/>
             </fieldset>
             <fieldset class="my-4  d-flex align-items-center">
                 <label for="file" class="browse">Browse Files</label>

@@ -5,7 +5,6 @@ const User = require('../models/user');
 
 // GET: /auth/register => show register form
 router.get('/register', (req, res) => {
-    req.session.messages = []
     req.logout((err) => {
         if(err) {
             return next(err);
@@ -19,6 +18,7 @@ router.post('/register', (req, res) => {
     User.register(new User({ username: req.body.username }), req.body.password, (err, user) =>{
         if (err) {
             console.log(err);
+            res.render('auth/register', { title: 'User Registration', messages: "User Already Exists"});
         }
         else {
             req.login(user, (err) => {
@@ -34,7 +34,6 @@ router.get('/login', (req, res) => {
      
     // if there are any session messages, store them in a local var
     let messages = req.session.messages || []
-
     // clear the session error messages
     req.session.messages = []
     
@@ -51,7 +50,7 @@ router.get('/login', (req, res) => {
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/files',
     failureRedirect: '/auth/login',
-    failureMessage: 'Invalid Login'
+    failureMessage: 'Invalid Login Credentials'
 }))
 
 // GET: /auth/logout 
